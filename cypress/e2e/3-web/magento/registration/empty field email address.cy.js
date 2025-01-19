@@ -1,4 +1,4 @@
-describe('Create an account', () => {
+describe('Registration', () => {
   beforeEach(() => {
     cy.visit('https://magento.softwaretestingboard.com/')
   })
