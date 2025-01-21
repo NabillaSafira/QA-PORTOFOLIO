@@ -22,7 +22,5 @@ describe('Registration', () => {
 
     cy.get(registPage.email_error).should('be.visible')
     .should('have.text','This is a required field.')
-
-
   })
 })
