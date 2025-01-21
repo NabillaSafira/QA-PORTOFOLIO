@@ -1,6 +1,6 @@
 describe('Registration', () => {
   beforeEach(() => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
   })
 
   it('Create an Account with empty field email address', () => {
