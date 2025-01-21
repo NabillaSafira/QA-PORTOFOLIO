@@ -23,4 +23,5 @@ describe('Registration', () => {
       .should('have.text','Please enter the same value again.')
     })
   })
+
   
