@@ -1,4 +1,4 @@
-import registPage from "../../../../support/pageObject/registPage"
+import registPageMagento from "../../../../support/pageObject/registPage"
 describe('Registration', () => {
     beforeEach(() => {
       cy.visit('')
@@ -6,20 +6,20 @@ describe('Registration', () => {
   
     it('Create an Account with confirm password is different from the password', () => {
       cy.contains('Create an Account').click()
-      cy.get(registPage.first).type("Nabilla")
+      cy.get(registPageMagento.first).type("Nabilla")
       .should('have.attr', 'aria-required', 'true');
-      cy.get(registPage.last).type("Safira")
+      cy.get(registPageMagento.last).type("Safira")
       .should('have.attr', 'aria-required', 'true'); 
-      cy.get(registPage.email).type('nabillasafira@gmail.com')
+      cy.get(registPageMagento.email).type('nabillasafira@gmail.com')
       .should('have.attr', 'aria-required', 'true');
-      cy.get(registPage.pwd).type("@Nabilla1234")
+      cy.get(registPageMagento.pwd).type("@Nabilla1234")
       .should('have.attr', 'aria-required', 'true'); 
-      cy.get(registPage.confirmpwd).type("@Nabilla1123")
+      cy.get(registPageMagento.confirmpwd).type("@Nabilla1123")
       .should('have.attr', 'aria-required', 'true'); 
-      cy.get(registPage.regist_btn).click()
+      cy.get(registPageMagento.regist_btn).click()
       .should('be.visible');
 
-      cy.get(registPage.confirmpwd_error).should('be.visible')
+      cy.get(registPageMagento.confirmpwd_error).should('be.visible')
       .should('have.text','Please enter the same value again.')
     })
   })
