@@ -1,4 +1,4 @@
-import loginPage from "../../../../support/pageObject/loginPage"
+import loginPage from "../../../../support/pageObject/magento/loginPageMagento"
 describe('Registration', () => {
     beforeEach(() => {
       cy.visit('')

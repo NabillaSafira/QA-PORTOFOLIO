@@ -1,4 +1,4 @@
- class registPage{
+ class registPageMagento{
     first = '#firstname'
     last = '#lastname'
     email = '[name="email"]'
@@ -9,4 +9,4 @@
     pwd_error = '#password-error'
     confirmpwd_error = '#password-confirmation-error'
 }
- export default new registPage()
+ export default new registPageMagento()

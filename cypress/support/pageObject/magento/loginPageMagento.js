@@ -1,4 +1,4 @@
-class loginPage{
+class loginPageMagento{
  login_Email = '[name="login[username]"]'  
  login_pass ='#pass'
  login_btn = '.action.login.primary'
@@ -6,4 +6,4 @@ class loginPage{
 
 
 }
-export default new loginPage()
+export default new loginPageMagento()
