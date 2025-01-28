@@ -1,5 +1,5 @@
-import loginPageSaucedemoCy from "../../../support/pageObject/saucedemo/loginPageSaucedemo.cy"
-describe('Seccessfully Login', () => {
+import loginPageSaucedemoCy from "../../../../../support/pageObject/saucedemo/loginPageSaucedemo.cy"
+describe('login with empty username field', () => {
     beforeEach(() => {
       cy.visit('')
     })
