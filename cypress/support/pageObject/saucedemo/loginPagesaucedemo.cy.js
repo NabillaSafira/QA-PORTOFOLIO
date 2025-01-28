@@ -3,5 +3,7 @@ class loginPageSaucedemo{
     password = '#password'
     login_btn ='[data-test="login-button"]'
     error_message = '[data-test="error"]'
+ 
+
 }
  export default new loginPageSaucedemo()
