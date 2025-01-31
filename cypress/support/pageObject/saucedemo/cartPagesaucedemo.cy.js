@@ -4,6 +4,6 @@ class cartPagesaudemo{
     add_tshirt = '[name="add-to-cart-test.allthethings()-t-shirt-(red)"]'
     cart = '[data-test="shopping-cart-link"]'
     remove_backpage ='[data-test="remove-sauce-labs-backpack"]'
-    success_checkout_message = '[data-test="complete-header"]'
+    
 }
 export default new cartPagesaudemo()
