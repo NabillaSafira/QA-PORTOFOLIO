@@ -29,6 +29,21 @@ describe('add items to cart', () => {
         cy.get(checkoutPagesaucedemoCy.continue).should('be.visible')
         .click(); 
         cy.get(checkoutPagesaucedemoCy.finish).should('be.visible')
-       .click(); 
+        .click(); 
+
+        cy.get(checkoutPagesaucedemoCy.success_checkout_message, { timeout: 10000 })
+        .should('exist')
+        .and('be.visible')
+        .and('have.text', 'Thank you for your order!');
+
+        cy.get(checkoutPagesaucedemoCy.complete_message, { timeout: 10000 })
+        .should('exist')
+        .and('be.visible')
+        .and('have.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
+
+        cy.get(checkoutPagesaucedemoCy.btn_backhome).click();
+
+        
+       
      })
 })

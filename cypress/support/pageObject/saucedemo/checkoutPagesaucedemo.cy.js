@@ -5,5 +5,8 @@ class chekoutPagesaucedemo{
     zip = '[name="postalCode"]'
     continue = '[data-test="continue"]'
     finish = '#finish'
+    success_checkout_message ='[data-test="complete-header"]'
+    complete_message = '[data-test="complete-text"]'
+    btn_backhome = '#back-to-products'
 }
 export default new chekoutPagesaucedemo()
