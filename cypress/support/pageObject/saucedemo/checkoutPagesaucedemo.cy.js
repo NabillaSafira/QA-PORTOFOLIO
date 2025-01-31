@@ -8,5 +8,6 @@ class chekoutPagesaucedemo{
     success_checkout_message ='[data-test="complete-header"]'
     complete_message = '[data-test="complete-text"]'
     btn_backhome = '#back-to-products'
+    error_message = '[data-test="error"]'
 }
 export default new chekoutPagesaucedemo()
