@@ -2,31 +2,31 @@
 Library    AppiumLibrary
 
 *** Variables ***
-${REMOTE_URL}      http://localhost:4723/wd/hub
-${PLATFORM_NAME}   Android
-${DEVICE_NAME}     11e4f62e
-${APP_PACKAGE}     com.example.myapplication
-${APP_ACTIVITY}    com.example.myapplication.MainActivity
-${USERNAME}        UserTest
-${PASSWORD}        123
+${remote_url}      http://localhost:4723/wd/hub
+${plateform_name}  Android
+${device_name}     11e4f62e
+${app_package}     com.example.myapplication
+${app_activity}    com.example.myapplication.MainActivity
+${username}        UserTest
+${password}        123
 
 *** Keywords ***
 Open Flight Application
     Open Application    
-    ...    ${REMOTE_URL}    
-    ...    platformName=${PLATFORM_NAME}    
-    ...    appium:deviceName=${DEVICE_NAME}    
-    ...    appium:appPackage=${APP_PACKAGE}    
-    ...    appium:appActivity=${APP_ACTIVITY} 
+    ...    ${remote_url}    
+    ...    platformName=${plateform_name}    
+    ...    appium:deviceName=${device_name}    
+    ...    appium:appPackage=${app_package}    
+    ...    appium:appActivity=${app_activity} 
 
 Click Sign in Button on Home Page
     Click Element    //android.widget.Button[@resource-id="com.example.myapplication:id/login"]
 
 Input Username
-    Input Text    //android.widget.EditText[@resource-id="com.example.myapplication:id/username"]    ${USERNAME}
+    Input Text    //android.widget.EditText[@resource-id="com.example.myapplication:id/username"]    ${username}
 
 Input Password
-    Input Text    //android.widget.EditText[@resource-id="com.example.myapplication:id/password"]    ${PASSWORD}
+    Input Text    //android.widget.EditText[@resource-id="com.example.myapplication:id/password"]    ${password}
 
 Click Sign in Button on Login Page
     Click Element    //android.widget.Button[@resource-id="com.example.myapplication:id/signIn"]
