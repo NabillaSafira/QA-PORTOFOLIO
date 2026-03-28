@@ -1,16 +1,14 @@
 # QA Portfolio
 This repository contains my QA testing projects, including both manual testing and automation testing using Cypress and Appium.
 
-## 🔧 Tools & Technologies
+## Tools & Technologies
 * Cypress
 * Appium
 * JavaScript
 * Page Object Model (POM)
 * Manual Testing (Test Case & Scenario)
 
----
-
-## 🌐 Web Automation Testing (Cypress)
+## Web Automation Testing (Cypress)
 
 Tested on: Magento E-commerce Website
 
@@ -24,9 +22,7 @@ My contribution:
 * Developed automation test scripts for shopping cart functionality
 * Executed test scenarios and validated system behavior
 
----
-
-## 📱 Mobile Automation Testing (Appium)
+## Mobile Automation Testing (Appium)
 
 Features tested:
 
@@ -37,22 +33,16 @@ My contribution:
 * Built automation test scripts for login validation
 * Verified system response for empty input fields
 
----
-
-## 🧪 Manual Testing
+## Manual Testing
 
 Scope:
 
 * Created test cases and test scenarios for web application
 * Performed manual testing to validate application functionality
 
----
-
-## 👥 Collaboration
+## Collaboration
 
 This project was developed as part of a QA bootcamp in a team environment, where I contributed to specific test scenarios and collaborated with team members.
-
----
 
 ## 📌 Notes
 
