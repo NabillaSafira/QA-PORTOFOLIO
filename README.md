@@ -44,7 +44,7 @@ Scope:
 
 This project was developed as part of a QA bootcamp in a team environment, where I contributed to specific test scenarios and collaborated with team members.
 
-## 📌 Notes
+## Notes
 
 This repository is part of my QA portfolio to demonstrate my skills in both manual and automation testing.
 
