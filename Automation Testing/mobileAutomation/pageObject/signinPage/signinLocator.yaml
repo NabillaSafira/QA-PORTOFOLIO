@@ -1,0 +1,4 @@
+Username_Input_Field: //android.widget.EditText[@resource-id="com.example.myapplication:id/username"]
+Password_Input_Field: //android.widget.EditText[@resource-id="com.example.myapplication:id/password"]
+sign_in_btn_on_login: //android.widget.Button[@resource-id="com.example.myapplication:id/signIn"]
+sign_in_button_on_home: //android.widget.Button[@resource-id="com.example.myapplication:id/login"]
