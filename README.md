@@ -4,8 +4,6 @@ This repository contains my QA testing projects, including both manual testing a
 ## Tools & Technologies
 * Cypress
 * Appium
-* JavaScript
-* Page Object Model (POM)
 * Manual Testing (Test Case & Scenario)
 
 ## Web Automation Testing (Cypress)
