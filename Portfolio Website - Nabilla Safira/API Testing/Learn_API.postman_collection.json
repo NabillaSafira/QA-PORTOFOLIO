@@ -1,0 +1,596 @@
+{
+  "info": {
+    "_postman_id": "7dd48e54-698f-493c-93c6-913820db4e25",
+    "name": "Learn_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "37115477"
+  },
+  "item": [
+    {
+      "name": "GET",
+      "item": [
+        {
+          "name": "Get List Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// {} = Object -> akses dengan titik (.)\r",
+                  "// [] = Array -> akses dengan indeks ([0], [1], [2], ...)\r",
+                  "// Indeks array dimulai dari 0\r",
+                  "\r",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const data = pm.response.json(); // Mengubah response API menjadi object/array JavaScript\r",
+                  "\r",
+                  "console.log('>> data', data[1]);      // [] = Array, [1] mengambil item ke-2\r",
+                  "console.log('>> total', data.length); // length = menghitung jumlah item dalam array\r",
+                  "\r",
+                  "// * Filter tidak ditemukan\r",
+                  "pm.test('Filter: Not Found', () => {\r",
+                  "    pm.expect(data.length).to.eql(0); // Diharapkan tidak ada data\r",
+                  "});\r",
+                  "\r",
+                  "// * Filter menghasilkan 1 data\r",
+                  "pm.test('Filter: 1 item', () => {\r",
+                  "    pm.expect(data.length).to.eql(1); // Diharapkan hanya ada 1 data\r",
+                  "});\r",
+                  "\r",
+                  "// * Filter menghasilkan lebih dari 1 data\r",
+                  "pm.test('Filter: Multiple Item', () => {\r",
+                  "    pm.expect(data.length).to.be.greaterThan(1); // Diharapkan lebih dari 1 data\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('List users has required id,username,email',()=>{\r",
+                  "    const listusers = data[0]\r",
+                  "\r",
+                  "    // pm.expect(listusers).to.have.property('id').to.be.a('number')\r",
+                  "    // pm.expect(listusers).to.have.property('username').to.be.a('string').not.be.empty\r",
+                  "    // pm.expect(listusers).to.have.property('email').to.be.a('string').not.be.empty\r",
+                  "\r",
+                  "    pm.expect(listusers.id).to.be.a('number')\r",
+                  "    pm.expect(listusers.username).to.be.a('string').and.not.be.empty\r",
+                  "    pm.expect(listusers.email).to.be.a('string').and.not.be.empty\r",
+                  "\r",
+                  " //id : \"1\" number\r",
+                  " //username : \"Bret\" string\r",
+                  " //email : \"Sincere@april.biz\" string\r",
+                  "\r",
+                  "})\r",
+                  "\r",
+                  "// * Ubah indeks array ([0], [1], dst.) atau nilai length sesuai skenario testing\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/users",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "Antonette",
+                  "disabled": true
+                },
+                {
+                  "key": "username",
+                  "value": "Bret",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List Albums",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ==============================\r",
+                  "// CEK STATUS CODE\r",
+                  "// ==============================\r",
+                  "\r",
+                  "// Membuat test\r",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "\r",
+                  "    // Memastikan status response = 200 (Success)\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "// ==============================\r",
+                  "// CEK ISI RESPONSE\r",
+                  "// ==============================\r",
+                  "\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "\r",
+                  "    // Mengecek apakah response mengandung nilai \"1\"\r",
+                  "    pm.expect(pm.response.text()).to.include(\"1\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "// ==============================\r",
+                  "// FILTER DATA BERDASARKAN JUMLAH ITEM\r",
+                  "// data.length = jumlah data dalam array\r",
+                  "// ==============================\r",
+                  "\r",
+                  "if (data.length === 0){\r",
+                  "\r",
+                  "    // Jika data kosong\r",
+                  "    pm.test(\"Filter: Not Found\", () => {\r",
+                  "        pm.expect(data.length).to.eql(0);\r",
+                  "    });\r",
+                  "\r",
+                  "} else if (data.length === 1){\r",
+                  "\r",
+                  "    // Jika hanya ada 1 data\r",
+                  "    pm.test(\"Filter: 1 Item\", () => {\r",
+                  "        pm.expect(data.length).to.eql(1);\r",
+                  "    });\r",
+                  "\r",
+                  "} else if (data.length > 1){\r",
+                  "\r",
+                  "    // Jika data lebih dari 1\r",
+                  "    pm.test(\"Filter: Multiple Item\", () => {\r",
+                  "        pm.expect(data.length).to.be.greaterThan(1);\r",
+                  "    });\r",
+                  "\r",
+                  "} else {\r",
+                  "\r",
+                  "    // Menampilkan pesan ke Postman Console (debugging)\r",
+                  "    console.log(\"not handle..\");\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "// ==============================\r",
+                  "// CATATAN SINGKAT\r",
+                  "// ==============================\r",
+                  "\r",
+                  "// pm.test()              -> Membuat test\r",
+                  "// pm.expect()            -> Melakukan validasi (assertion)\r",
+                  "// pm.response            -> Mengambil response API\r",
+                  "// pm.response.text()     -> Mengambil body response dalam bentuk text\r",
+                  "// .to.have.status(200)   -> Cek status code\r",
+                  "// .to.include()          -> Cek apakah ada nilai tertentu\r",
+                  "// .to.eql()              -> Nilai harus sama persis\r",
+                  "// .greaterThan()         -> Nilai harus lebih besar\r",
+                  "// data.length            -> Menghitung jumlah data dalam array\r",
+                  "// console.log()          -> Menampilkan pesan di Postman Console"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/albums",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "albums"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1000",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Detail Post id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();\r",
+                  "// const = membuat variabel yang nilainya tidak bisa diubah\r",
+                  "// data = nama variabel (bebas, bisa diganti misalnya responseData)\r",
+                  "// pm.response.json() = mengambil body response API lalu mengubahnya menjadi format JSON (object/array JavaScript)\r",
+                  "\r",
+                  "pm.test('Detail Post id is object{}',()=>{ \r",
+                  "    pm.expect(data).to.be.an('object'); // Menampilkan albums berisi object (yang menggunakan kurung kurawal {})\r",
+                  "})\r",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/posts/: id",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts",
+                ": id"
+              ],
+              "variable": [
+                {
+                  "key": " id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List Comment with Post id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/comments?postId=15",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "comments"
+              ],
+              "query": [
+                {
+                  "key": "postId",
+                  "value": "15"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "POST",
+      "item": [
+        {
+          "name": "Create Data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201); //validasi status code adalah 201 untuk create\r",
+                  "});\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"id\"); //validasi apakah response body mengandung string \"id\"\r",
+                  "});\r",
+                  "pm.test(\"name is correct\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.name).to.eql(\"Nabilla\"); //validasi apakah name dalam response body adalah \"Nabilla\"\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \r\n        \"name\": \"Nabilla\",\r\n        \"username\": \"heybeebill\",\r\n        \"email\": \"bil@bill.biz\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "\r",
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "pm.test(\"email is correct\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.email).to.eql(\"ci@ci.com\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \r\n        \"name\": \"Silvi\",\r\n        \"username\": \"heysilvi\",\r\n        \"email\": \"ci@ci.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PUT",
+      "item": [
+        {
+          "name": "PUT data 1",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "    });"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userId\": 1,\r\n  \"id\": 1,\r\n  \"title\": \"Belajar PUT request\",\r\n  \"body\": \"ini adalah data baru\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts/1",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT data 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userId\": 2,\r\n  \"id\": 2,\r\n  \"title\": \"Belajar PUT request\",\r\n  \"body\": \"ini adalah data baru nomor 2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts/2",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PATCH",
+      "item": [
+        {
+          "name": "Patch Data 1",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"ini Belajar PATCH\");\r",
+                  "});\r",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"title\": \"ini Belajar PATCH\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts/1",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Data 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"title\": \"ini Belajar PATCH 2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts/2",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DELETE",
+      "item": [
+        {
+          "name": "Delete Data 1",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{BaseURL}}/posts/1",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "posts",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
